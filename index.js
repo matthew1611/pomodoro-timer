@@ -16,19 +16,26 @@ function updateTimer(){
 }
 
 function startTimer(){
-
     interval = setInterval( ()=>{
         timeLeft--;
         updateTimer();
+        if(timeLeft === 0){
+            clearInterval(interval);
+            alert("Time's up!");
+            timeLeft = 1500;
+            updateTimer();
+        }
     }, 1000);
 }
 
 function stopTimer(){
-    console.log("stop");
+    clearInterval(interval);
 }
 
 function resetTimer(){
-    console.log("reset");
+    clearInterval(interval);
+    timeLeft = 1500;
+    updateTimer();
 }
 
 
